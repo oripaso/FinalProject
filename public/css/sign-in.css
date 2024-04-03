@@ -1,0 +1,108 @@
+  body, html {
+      height: 100%;
+      margin: 0;
+    }
+    
+  
+    .bg {
+      /* התמונה מהלינק שנתת */
+      background-image: url('https://spirulite.co.il/wp-content/uploads/2022/06/Depositphotos_8731624_XL.jpg');
+      
+      /* מלא את המסך כולו */
+      height: 100%; 
+      
+      /* קבע את התמונה למרכז ומנע חזרה עליה */
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+    .form-container {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        max-width: 300px;
+        padding: 16px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+        transform: translate(-50%, -50%);
+    }
+
+
+    input[type=text], input[type=password] {
+      width: 100%;
+      padding: 15px;
+      margin: 5px 0 22px 0;
+      display: inline-block;
+      border: none;
+      background: #f1f1f1;
+    }
+  
+    input[type=text]:focus, input[type=password]:focus {
+      background-color: #ddd;
+      outline: none;
+    }
+  
+    .btn {
+      background-color: #4CAF50;
+      color: white;
+      padding: 16px 20px;
+      border: none;
+      cursor: pointer;
+      width: 100%;
+      opacity: 0.9;
+    }
+  
+    .btn:hover {
+      opacity: 1;
+    }
+  
+
+
+
+
+   
+  
+  .navbar ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: #333;
+      direction: rtl;
+  }
+  
+  .navbar li {
+      float: right;
+  }
+  
+  .navbar li a {
+      display: block;
+      color: white;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+  }
+  
+  .navbar li a:hover {
+      background-color: #111;
+  }
+
+  .navbar li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+.navbar li a:hover {
+    background-color: #555;
+    color: #ff0;
+}
+.navbar {
+  background: linear-gradient(45deg, #007bff, #8A2387);
+}
+
+  
