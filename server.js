@@ -33,21 +33,21 @@ io.on('connection', (socket) => {
   ];
   
 
-  let currentMessageIndex = 0; // מתחילים מההודעה הראשונה
+  let currentMessageIndex = 0; // starting from the first message
 
-  // שלח את ההודעה הראשונה מיד עם התחברות הלקוח
+  // send the first meassge when the client is log in
   if (messages.length > 0) {
     socket.emit('message', messages[currentMessageIndex]);
     currentMessageIndex++;
   }
 
-  // כאשר מתקבלת תגובה, שלח את ההודעה הבאה בתור
+  // when we get messgae, the server send the next message in the queue
   socket.on('reply', (reply) => {
     console.log('Reply from client:', reply);
 
-//   // בדוק אם התשובה היא "לא" לשאלה על קרן פנסיה
+    //if we receive a "no" reply in the second message
 if (currentMessageIndex === 2 && reply.toLowerCase().includes('לא')) {
-    // שלב את הקישור לסרטון בתוך ההודעה הבאה
+  // send link to youtube that descrube about pesion
     const nextMessage = messages[currentMessageIndex];
     const messageWithVideo = `https://www.youtube.com/watch?v=FgYaNzH-iuU`;
     socket.emit('message', messageWithVideo);
@@ -59,28 +59,11 @@ if (currentMessageIndex === 2 && reply.toLowerCase().includes('לא')) {
       socket.emit('message', messages[currentMessageIndex]);
       currentMessageIndex++;
     } else {
-      // כאשר אין יותר הודעות לשלוח
+      // if we dont have more questions to send
       console.log('No more messages to send');
     }
   });
 });
-
-// // Redirect the base URL to the sign-in page
-// app.get('/', (req, res) => {
-//   res.sendFile(path.join(__dirname, 'public', 'sign-in.html'));
-// });
-
-// // Redirect after sign-in to the chat page
-// app.post('/submit-your-form', (req, res) => {
-//   // Here you might handle the sign-in data
-//   res.redirect('/chat');
-// });
-
-// // Serving the chat page
-// app.get('/chat', (req, res) => {
-//   res.sendFile(path.join(__dirname, 'public', 'chat.html'));
-// });
-  
 
 
 app.get('/', (req, res) => {
@@ -88,11 +71,10 @@ app.get('/', (req, res) => {
 });
 
 app.post('/submit-your-form', (req, res) => {
-  // כאן יכול להיות טיפול בנתוני הטופס
+  
   res.redirect('/chat');
 });
 
-// מגדיר נתיב לעמוד הצ'אט
 app.get('/chat', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'chat.html'));
 });
