@@ -4,9 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Financial Advisory Chatbot</title>
+<script src="/socket.io/socket.io.js"></script>
+<!-- <script src="/public/js/chat.js"></script> -->
 <link rel="stylesheet" href="css/chat.css">
 </head>
+
 <body>
+  
 
 <div class="chat-container">
   <div class="chat-header">
@@ -21,7 +25,7 @@
   </div>
 </div>
 
-<script src="/socket.io/socket.io.js"></script>
+
 <script>
     const socket = io();
 
@@ -32,6 +36,9 @@
       messageElement.classList.add('message', className);
       messageElement.innerHTML = `<p>${message}</p>`;
       messagesContainer.appendChild(messageElement);
+      
+       // Scroll to the bottom every time a message is added
+      messagesContainer.scrollTop = messagesContainer.scrollHeight;
     }
   
     socket.on('message', (message) => {

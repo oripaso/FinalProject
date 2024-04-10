@@ -11,7 +11,7 @@
 <body>
   <nav class="navbar">
     <ul>
-        <li><a href="/">בית</a></li>
+        <li><a href="/">התחברות</a></li>
         <li><a href="/about">אודותינו</a></li>
         <li><a href="/pension-info">מהי פנסיה</a></li>
         <li><a href="/recommendations">המלצות</a></li>
@@ -33,6 +33,34 @@
     <button type="submit" class="btn">הרשם</button>
   </form>
 </div>
+<script>
+  // sign-in-validation.js
+
+document.addEventListener("DOMContentLoaded", function() {
+    const signInForm = document.querySelector("form");
+
+    signInForm.addEventListener("submit", function(event) {
+        const email = document.querySelector("input[name='email']").value;
+        const password = document.querySelector("input[name='psw']").value;
+        
+        let errorMessage = '';
+        
+        if (!email) {
+            errorMessage += 'Email is required.\n';
+        }
+
+        if (password.length < 8) {
+            errorMessage += 'Password must be at least 8 characters long.\n';
+        }
+
+        if (errorMessage) {
+            event.preventDefault(); // Prevent form submission
+            alert(errorMessage);
+        }
+    });
+});
+
+</script>
 
 
 </body>
